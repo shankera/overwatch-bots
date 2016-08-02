@@ -5,7 +5,7 @@ import string
 
 from slackclient import SlackClient
 # starterbot's ID as an environment variable
-BOT_ID = os.environ.get("MCCREE_ID")
+BOT_ID = os.environ.get("HERO_ID")
 
 # constants
 AT_BOT = "<@" + BOT_ID + ">:"
@@ -13,7 +13,7 @@ THE_QUESTION = "what time is it"
 HIGH_NOON = "High Noon"
 
 # instantiate Slack & Twilio clients
-slack_client = SlackClient(os.environ.get('MCCREE_BOT_TOKEN'))
+slack_client = SlackClient(os.environ.get('HERO_BOT_TOKEN'))
 
 def handle_command(command, channel):
     if THE_QUESTION in command or "what time it is" in command :

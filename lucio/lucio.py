@@ -11,15 +11,16 @@ BOT_ID = os.environ.get("HERO_ID")
 AT_BOT = "<@" + BOT_ID + ">:"
 
 # instantiate Slack & Twilio clients
-slack_client = SlackClient(os.environ.get('HERO_OT_TOKEN'))
+slack_client = SlackClient(os.environ.get('HERO_BOT_TOKEN'))
 
 def handle_command(command, channel):
-    if THE_QUESTION in command or "what time it is" in command :
-        response = "It's High Noon. . ."
+    sites = {"soundcloud.com", "bandcamp.com", "spotify.com"}
+    if "soundcloud.com" in command and "hippyjonyo" in command :
+        response = "Oh, this is my jam!"
         slack_client.api_call("chat.postMessage", channel=channel,
                           text=response, as_user=True)
-    elif HIGH_NOON.lower() in command:
-        response = "You're damn right"
+    elif any(site in command for site in sites):
+        response = "Let's drop the beat."
         slack_client.api_call("chat.postMessage", channel=channel,
                           text=response, as_user=True)
 
